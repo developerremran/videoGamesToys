@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bestW{
+   max-width: 1480px;
+   margin: 0 auto;
+}
