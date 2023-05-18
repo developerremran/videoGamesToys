@@ -6,3 +6,33 @@
    max-width: 1480px;
    margin: 0 auto;
 }
+.banner1{
+   background-image: url('/src/assets/Banner/banner1.png');
+   background-position: bottom;
+   background-repeat: no-repeat;
+   background-size: cover;
+  
+
+   
+}
+.banner2{
+   background-image: url('/src/assets/Banner/banner2.png');
+   background-position: bottom;
+   background-repeat: no-repeat;
+   background-size: cover;
+
+}
+
+.card-zoom {
+   @apply relative flex items-center justify-center m-2 overflow-hidden  rounded-2xl;
+ }
+ .card-zoom-image {
+   @apply absolute w-full transition-all duration-500 ease-in-out transform bg-center bg-cover;
+ }
+
+ .card-zoom:hover .card-zoom-image {
+   @apply scale-150;
+ }
+
+
+ 

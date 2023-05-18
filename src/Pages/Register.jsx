@@ -1,12 +1,14 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import { useContext } from 'react';
 import { AuthContext } from '../Authntication/Authntication';
+import {   FaGoogle } from 'react-icons/fa';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 
 
 
 const Register = () => {
-//   const { registerUser } = useContext(AuthContext)
+  const { registerUser,googleNewUser} = useContext(AuthContext)
 
 
    const submitHandeler = event =>{
@@ -20,16 +22,37 @@ const Register = () => {
 
     const info = {name,email, password, repeatPassword, image}
     console.log(info);
+    from.reset()
 
-    // registerUser(email, password)
-    // .then(result =>{
-    //    const user = result.user;
-    //    console.log(user);
-    // })
-    // .catch(error => console.log(error))
+    registerUser(email, password)
+    .then(result =>{
+       const user = result.user;
+       console.log(user);
+       alert('success register')
+    
+    })
+    .catch(error => console.log(error))
     
 
    }
+
+//    google user register 
+ const googleNewUserH = () =>{
+    googleNewUser()
+    .then(
+        (result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+          }
+    )
+    .catch(error => console.log(error))
+ }
+   
 
     return (
         <div className='bestW'>
@@ -37,7 +60,7 @@ const Register = () => {
                 Please Register Now
             </h2>
 
-            <div className='w-1/3 mx-auto shadow-lg p-10 border  h-[600px]'>
+            <div className='w-1/3 mx-auto shadow-lg p-10 border  h-[650px]'>
                 <form onSubmit={submitHandeler} className="flex flex-col gap-4">
                     <div>
                         <div className="mb-2 block">
@@ -131,6 +154,16 @@ const Register = () => {
                     <Button type="submit">
                         Register new account
                     </Button>
+                   <div  className='flex gap-5'>
+                   <Button onClick={()=> googleNewUserH()} className='w-1/2 bg-orange-400' type="submit">
+                    <FaGoogle className='mr-5'></FaGoogle> 
+                       Google Register
+                    </Button>
+                    <Button className='w-1/2 bg-orange-400' type="submit">
+                    <FaGoogle className='mr-5'></FaGoogle> 
+                       Google Register
+                    </Button>
+                   </div>
                 </form>
             </div>
         </div>
