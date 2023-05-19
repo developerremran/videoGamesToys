@@ -10,6 +10,7 @@ import Blog from "../Pages/Blog";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import SingleDetailsPage from "../Components/SingleDetailsPage/SingleDetailsPage";
 
 
 const router = createBrowserRouter([
@@ -24,8 +25,10 @@ const router = createBrowserRouter([
             },
             {
                 path:'/all_toys',
-                element:<AllToys></AllToys>
+                element:<AllToys></AllToys>,
+                // loader:({params})=>fetch(`http://localhost:5000/products/${id}`)
             },
+        
             {
                 path:'/add_toys',
                 element:<AddToys></AddToys>
@@ -53,6 +56,15 @@ const router = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/singleDetails',
+                element:<SingleDetailsPage></SingleDetailsPage>
+            },
+            {
+              path:'/all_toys/:id',
+              element:<SingleDetailsPage></SingleDetailsPage>,
+              loader:({params})=> fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
     }

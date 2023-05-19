@@ -2,8 +2,8 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div>
-            <h2>blog page</h2>
+        <div className='container mx-auto mt-36'>
+             
             
         </div>
     );

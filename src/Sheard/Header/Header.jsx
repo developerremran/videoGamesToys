@@ -60,7 +60,7 @@ const Header = () => {
                 <Navbar.Collapse >
                     <Navbar.Link
                         href="/"
-                        active={true}
+                         
                         className='text-xl'
                     >
                         Home

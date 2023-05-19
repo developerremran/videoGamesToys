@@ -21,6 +21,10 @@ const Home = () => {
 
                 <TabsCompo></TabsCompo>
                 <AboutSection></AboutSection>
+                      <div className='text-center'>
+                      <h2 className=' mt-28 font-semibold  text-4xl mb-4'>  All Toys In Hero </h2>
+                      <p>There are many kind of product you can choice and order now. <br /> First delivery and first speed</p>
+                      </div>
             
             <br /><br /><br />
             <br /><br /><br />
