@@ -1,7 +1,9 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Authntication/Authntication';
 
 const AddToys = () => {
+const {users} = useContext(AuthContext)
 
     const addedHandler = (event) => {
         event.preventDefault()
@@ -13,9 +15,11 @@ const AddToys = () => {
         const Quantity  = form.Quantity.value;
         const Price   = form.Price.value;
         const image   = form.image.value;
+        const description  = form.description.value;
+        const email = form.email.value;
         
         const allInfo={
-            name,id,sellerName,category,Quantity,Price,image
+            name,id,sellerName,category,Quantity,Price,image,description,email
         }
         // console.log(allInfo)
         fetch('http://localhost:5000/mytoys',{
@@ -28,8 +32,13 @@ const AddToys = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            // if(insertedId){
+            //     alert('successes added')
+            //     form.reset()
+            // }
         })
         .catch(error => console.log(error))
+        form.reset()
     
     }
 
@@ -49,6 +58,23 @@ const AddToys = () => {
                             type="text"
                             name='id'
                             placeholder="Toys Name"
+                            required={true}
+                        />
+                    </div>
+                    <div><div className="mb-2 block">
+                        <Label
+                            htmlFor="email"
+                            value="Your Email"
+                        />
+                         
+                    </div>
+                    <TextInput
+                            id="email"
+                            type="email"
+                            name='email'
+                            
+                            placeholder="email"
+                            defaultValue={users?.email}
                             required={true}
                         />
                     </div>
@@ -127,6 +153,19 @@ const AddToys = () => {
                             type="text"
                             name='image'
                             placeholder="Image URL"
+                            required={true}
+                        />
+                    </div>
+                    <div><div className="mb-2 block ">
+                        <Label
+                            htmlFor="text"
+                            value="Toys Description"
+                        />
+                    </div><TextInput
+                            id="text"
+                            type="text-area"
+                            name='description'
+                            placeholder="Write a description"
                             required={true}
                         />
                     </div>
