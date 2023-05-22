@@ -3,9 +3,16 @@ import { AuthContext } from '../Authntication/Authntication';
 import { Button, Label, TextInput } from 'flowbite-react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {loginUser, googleNewUser} = useContext(AuthContext)
+    const navigate = useNavigate()
+  const location = useLocation()
+
+  console.log(location);
+  const from = location.state?.from?.pathname;
+
 
     const googleNewUserL = () =>{
         googleNewUser()
@@ -17,6 +24,7 @@ const Login = () => {
                 // The signed-in user info.
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
+                navigate(from)
                 // ...
               }
         )
@@ -39,12 +47,14 @@ const Login = () => {
             const user = result.user;
             
             console.log(user);
+            navigate(from)
             
         })
         .catch(error => {
             console.log(error)
         alert('check again Email & Password')})
      }
+
      
 
     return (

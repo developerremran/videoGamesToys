@@ -8,8 +8,10 @@ const PrivateRoute = ({ children }) => {
   //  console.log(users);
   const location = useLocation();
   console.log(location);
+  
   if (loading) {
-    return <><button type="button" class="bg-indigo-500 ..." disabled>
+    return <>
+    <button type="button" class="bg-indigo-500 ..." disabled>
       <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
         {/* <!-- ... --> */}
       </svg>

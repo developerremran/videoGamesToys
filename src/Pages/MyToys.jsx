@@ -16,7 +16,7 @@ const MyToys = () => {
         })
         .catch(error => console.log(error))
     },[users])
-        console.log(selectedToys);
+        // console.log(selectedToys);
     return (
         <div className='container mx-auto'>
             <h2>my toys page</h2>
